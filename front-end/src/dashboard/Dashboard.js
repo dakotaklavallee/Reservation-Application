@@ -4,6 +4,7 @@ import { listReservations } from "../utils/api";
 import { next, previous } from "../utils/date-time";
 import useQuery from "../utils/useQuery";
 import ErrorAlert from "../layout/ErrorAlert";
+import { FaAngleLeft, FaAngleRight } from "react-icons/fa";
 
 /**
  * Defines the dashboard page.
@@ -15,7 +16,7 @@ function Dashboard({ date }) {
   const [reservations, setReservations] = useState([]);
   const [reservationsError, setReservationsError] = useState(null);
   const query = useQuery();
-  const dateQuery = query.get("date")
+  const dateQuery = query.get("date");
   const [pageDate, setPageDate] = useState(dateQuery ? dateQuery : date);
 
   const history = useHistory();
@@ -38,7 +39,7 @@ function Dashboard({ date }) {
   };
 
   function loadDashboard() {
-    const date = pageDate
+    const date = pageDate;
     const abortController = new AbortController();
     setReservationsError(null);
     listReservations({ date }, abortController.signal)
@@ -55,6 +56,7 @@ function Dashboard({ date }) {
       </div>
       <div>
         <button className="btn btn-secondary" onClick={previousDateHandler}>
+          <FaAngleLeft />
           Previous
         </button>
         <button className="btn btn-secondary" onClick={todayHandler}>
@@ -62,6 +64,7 @@ function Dashboard({ date }) {
         </button>
         <button className="btn btn-secondary" onClick={nextDateHandler}>
           Next
+          <FaAngleRight />
         </button>
       </div>
       <ErrorAlert error={reservationsError} />

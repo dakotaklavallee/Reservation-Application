@@ -6,10 +6,17 @@ import Error from "./Error";
 
 export default function CreateReservation() {
   const [errors, setErrors] = useState({});
+  console.log(errors);
   const history = useHistory();
 
+  const handleErrorClose = (e) => {
+    const errorMessage = e.target.parentNode.parentNode.childNodes[0].innerHTML;
+    delete errors[`${errorMessage}`];
+    setErrors({...errors});
+  }
+
   const errorMap = Object.keys(errors).map((error, index) => (
-    <Error key={index} error={error} />
+    <Error key={index} error={error} handleErrorClose={handleErrorClose} />
   ));
 
   const initialFormData = {
