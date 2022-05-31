@@ -1,5 +1,5 @@
-const reservationsSeed = require('./01-reservations.json');
+const reservations = require("./01-reservations.json");
 
 exports.seed = function (knex) {
-  return knex('reservations').insert(reservationsSeed);
+  return knex.raw("TRUNCATE TABLE reservations RESTART IDENTITY CASCADE").then(() => knex("reservations").insert(reservations));
 };

@@ -1,10 +1,12 @@
 import React, { useEffect, useState } from "react";
 import { useHistory } from "react-router-dom";
-import { listReservations } from "../utils/api";
+import { listReservations, listTables } from "../utils/api";
 import { next, previous } from "../utils/date-time";
 import useQuery from "../utils/useQuery";
 import ErrorAlert from "../layout/ErrorAlert";
 import { FaAngleLeft, FaAngleRight } from "react-icons/fa";
+import ReservationList from "../components/ReservationList";
+import TableList from "../components/TableList";
 
 /**
  * Defines the dashboard page.
@@ -14,6 +16,7 @@ import { FaAngleLeft, FaAngleRight } from "react-icons/fa";
  */
 function Dashboard({ date }) {
   const [reservations, setReservations] = useState([]);
+  const [tables, setTables] = useState([]);
   const [reservationsError, setReservationsError] = useState(null);
   const query = useQuery();
   const dateQuery = query.get("date");
@@ -45,16 +48,21 @@ function Dashboard({ date }) {
     listReservations({ date }, abortController.signal)
       .then(setReservations)
       .catch(setReservationsError);
+    listTables(abortController.signal)
+      .then(setTables)
+      .catch(setReservationsError);
     return () => abortController.abort();
   }
 
   return (
     <main>
-      <h1>Dashboard</h1>
-      <div className="d-md-flex mb-3">
+      <div className="dashboard dashboard-title row ml-1">
+        <h1>Dashboard</h1>
+      </div>
+      <div className="d-md-flex mb-3 row ml-1">
         <h4 className="mb-0">Reservations for date {pageDate}</h4>
       </div>
-      <div>
+      <div className="dashboard dashboard-nav row ml-1 mb-3">
         <button className="btn btn-secondary" onClick={previousDateHandler}>
           <FaAngleLeft />
           Previous
@@ -67,8 +75,17 @@ function Dashboard({ date }) {
           <FaAngleRight />
         </button>
       </div>
-      <ErrorAlert error={reservationsError} />
-      {JSON.stringify(reservations)}
+      <div className="dashboard error-list row ml-1">
+        <ErrorAlert error={reservationsError} />
+      </div>
+      <div className="dashboard table-display row mx-1">
+        <div className="col">
+          <ReservationList reservations={reservations} />
+        </div>
+        <div className="col">
+          <TableList tables={tables} />
+        </div>
+      </div>
     </main>
   );
 }

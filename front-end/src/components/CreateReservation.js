@@ -6,14 +6,13 @@ import Error from "./Error";
 
 export default function CreateReservation() {
   const [errors, setErrors] = useState({});
-  console.log(errors);
   const history = useHistory();
 
   const handleErrorClose = (e) => {
     const errorMessage = e.target.parentNode.parentNode.childNodes[0].innerHTML;
     delete errors[`${errorMessage}`];
-    setErrors({...errors});
-  }
+    setErrors({ ...errors });
+  };
 
   const errorMap = Object.keys(errors).map((error, index) => (
     <Error key={index} error={error} handleErrorClose={handleErrorClose} />
@@ -44,11 +43,11 @@ export default function CreateReservation() {
     formData.people = parseInt(formData.people);
     try {
       await createReservation(formData, ac.signal);
-      history.push(`/dashboard?date=${formData.reservation_date}`);
       setErrors({});
+      history.push(`/dashboard?date=${formData.reservation_date}`);
     } catch (error) {
-      if(!errors[error.message]){
-        setErrors({ ...errors, [error.message] : 1})
+      if (!errors[error.message]) {
+        setErrors({ ...errors, [error.message]: 1 });
       }
     }
     return () => ac.abort();
