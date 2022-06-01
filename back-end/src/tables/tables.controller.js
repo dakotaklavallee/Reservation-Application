@@ -119,15 +119,24 @@ function currentlyOccupied(req,res,next){
   next();
 }
 
+function reservationNotSeated(req, res, next) {
+  const reservation = res.locals.reservation;
+  if (reservation.status === "booked") {
+    return next();
+  }
+  return next({
+    status: 400,
+    message: "Reservation is already seated or finished."
+  })
+}
+
 async function update(req, res) {
   const updatedTable = {
     ...res.locals.table,
     reservation_id: req.body.data.reservation_id,
   };
-  console.log(updatedTable);
   await service.update(updatedTable);
   const data = await service.read(updatedTable.table_id);
-  console.log(data);
   res.json({ data });
 }
 
@@ -153,6 +162,7 @@ module.exports = {
     asyncErrorBoundary(reservationExists),
     capcityCheck,
     occupiedCheck,
+    reservationNotSeated,
     asyncErrorBoundary(update),
   ],
   finish: [asyncErrorBoundary(tableExists), currentlyOccupied, asyncErrorBoundary(finish)],
