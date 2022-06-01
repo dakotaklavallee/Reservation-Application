@@ -41,6 +41,7 @@ export default function CreateReservation() {
     e.preventDefault();
     const ac = new AbortController();
     formData.people = parseInt(formData.people);
+    formData.reservation_date = formData.reservation_date.split("T")[0];
     try {
       await createReservation(formData, ac.signal);
       setErrors({});
@@ -56,8 +57,8 @@ export default function CreateReservation() {
   return (
     <>
       <div className="createErrors">{errorMap ? errorMap : null}</div>
-      <h1 className="my-3">Create Reservation</h1>
       <ReservationForm
+        mode={"Create"}
         handleChange={handleChange}
         handleCancel={handleCancel}
         submitHandler={submitHandler}

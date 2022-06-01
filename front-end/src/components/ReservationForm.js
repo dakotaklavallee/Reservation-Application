@@ -5,8 +5,11 @@ export default function ReservationForm({
   submitHandler,
   formData,
   handleCancel,
+  mode,
 }) {
   return (
+    <>
+    <h1 className="my-3">{mode} Reservation</h1>
     <form onSubmit={submitHandler}>
       <label htmlFor="first_name">
         Enter Your First Name:
@@ -88,5 +91,6 @@ export default function ReservationForm({
         </button>
       </div>
     </form>
+    </>
   );
 }

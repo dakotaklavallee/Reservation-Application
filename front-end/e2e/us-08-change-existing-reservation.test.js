@@ -191,10 +191,12 @@ describe("US-08 - Change an existing reservation - E2E", () => {
         fullPage: true,
       });
 
+
       await Promise.all([
         submitButton.click(),
         page.waitForNavigation({ waitUntil: "networkidle0" }),
       ]);
+      
 
       expect(page.url()).toContain("/dashboard");
 

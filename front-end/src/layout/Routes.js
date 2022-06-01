@@ -7,14 +7,8 @@ import { today } from "../utils/date-time";
 import CreateTable from "../components/CreateTable";
 import SeatReservation from "../components/SeatReservation";
 import SearchPage from "../components/SearchPage";
+import EditReservation from "../components/EditReservation";
 
-/**
- * Defines all the routes for the application.
- *
- * You will need to make changes to this file.
- *
- * @returns {JSX.Element}
- */
 function Routes() {
   return (
     <Switch>
@@ -29,6 +23,9 @@ function Routes() {
       </Route>
       <Route path="/reservations/:reservation_id/seat">
         <SeatReservation />
+      </Route>
+      <Route path="/reservations/:reservation_id/edit">
+        <EditReservation />
       </Route>
       <Route path="/tables/new">
         <CreateTable />

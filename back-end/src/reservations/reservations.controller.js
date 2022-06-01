@@ -24,6 +24,7 @@ const VALID_PROPERTIES = [
   "created_at",
   "updated_at",
   "status",
+  "reservation_id",
 ];
 
 function hasOnlyValidProperties(req, res, next) {
@@ -152,7 +153,7 @@ function validStatus(req, res, next) {
     });
   }
 
-  const validStatuses = ["booked", "seated", "finished"];
+  const validStatuses = ["booked", "seated", "finished", "cancelled"];
   if (validStatuses.includes(status)) {
     return next();
   }
@@ -187,6 +188,15 @@ async function updateStatus(req, res) {
   res.json({ data });
 }
 
+async function update(req, res) {
+  const updatedReservation = {
+    ...req.body.data,
+    reservation_id: res.locals.reservation.reservation_id,
+  };
+  const data = await service.update(updatedReservation);
+  res.json({ data });
+}
+
 module.exports = {
   create: [
     hasOnlyValidProperties,
@@ -205,4 +215,15 @@ module.exports = {
     validStatus,
     asyncErrorBoundary(updateStatus),
   ],
+  update: [
+    asyncErrorBoundary(reservationExists),
+    hasOnlyValidProperties,
+    hasRequiredProperties,
+    validDate,
+    validTime,
+    validPeople,
+    validateReservation,
+    bookedCheck,
+    asyncErrorBoundary(update),
+  ]
 };
