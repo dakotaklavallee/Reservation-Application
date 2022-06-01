@@ -84,7 +84,7 @@ async function tableExists(req, res, next) {
   } else {
     next({
       status: 404,
-      message: "Table Could Not Be Found.",
+      message: `Table ${table_id} Could Not Be Found.`,
     });
   }
 }
@@ -101,10 +101,19 @@ function capcityCheck(req, res, next) {
 
 function occupiedCheck(req, res, next) {
   if (res.locals.table.reservation_id) {
-    console.log("We've hit this twice");
     return next({
       status: 400,
       message: "Table is occupied",
+    });
+  }
+  next();
+}
+
+function currentlyOccupied(req,res,next){
+  if (!res.locals.table.reservation_id) {
+    return next({
+      status: 400,
+      message: "Table is currently not occupied",
     });
   }
   next();
@@ -119,6 +128,12 @@ async function update(req, res) {
   await service.update(updatedTable);
   const data = await service.read(updatedTable.table_id);
   console.log(data);
+  res.json({ data });
+}
+
+async function finish(req, res) {
+  const table = res.locals.table;
+  const data = await service.finish(table.table_id, table.reservation_id);
   res.json({ data });
 }
 
@@ -140,4 +155,5 @@ module.exports = {
     occupiedCheck,
     asyncErrorBoundary(update),
   ],
+  finish: [asyncErrorBoundary(tableExists), currentlyOccupied, asyncErrorBoundary(finish)],
 };
