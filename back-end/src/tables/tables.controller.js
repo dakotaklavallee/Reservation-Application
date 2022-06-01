@@ -34,7 +34,7 @@ function validCapacity(req, res, next) {
   if (typeof data["capacity"] !== "number" || data["capacity"] < 1) {
     return next({
       status: 400,
-      message: `capacity wrong`,
+      message: `capacity is invalid.`,
     });
   }
   next();

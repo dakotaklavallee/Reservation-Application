@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useHistory, Link } from "react-router-dom";
 import ErrorAlert from "../layout/ErrorAlert";
 import { cancelReservation } from "../utils/api";
+import './Reservation.css'
 
 export default function Reservation({ reservation }) {
   const [error, setError] = useState(null);
@@ -38,7 +39,7 @@ export default function Reservation({ reservation }) {
         <td data-reservation-id-status={reservation.reservation_id}>
           {reservation.status}
         </td>
-        <td>
+        <td className="">
           {reservation.status === "booked" ? (
             <Link to={`/reservations/${reservation.reservation_id}/seat`}>
               Seat
