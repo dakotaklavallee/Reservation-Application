@@ -7,6 +7,7 @@ import ErrorAlert from "../layout/ErrorAlert";
 import { FaAngleLeft, FaAngleRight } from "react-icons/fa";
 import ReservationList from "../components/ReservationList";
 import TableList from "../components/TableList";
+import './Dashboard.css';
 
 /**
  * Defines the dashboard page.
@@ -59,7 +60,7 @@ function Dashboard({ date }) {
       <div className="dashboard dashboard-title row ml-1">
         <h1>Dashboard</h1>
       </div>
-      <div className="d-md-flex mb-3 row ml-1">
+      <div className=" dashboard dashboard-info d-md-flex mb-3 row ml-1">
         <h4 className="mb-0">Reservations for date {pageDate}</h4>
       </div>
       <div className="dashboard dashboard-nav row ml-1 mb-3">
@@ -79,7 +80,7 @@ function Dashboard({ date }) {
         <ErrorAlert error={reservationsError} />
       </div>
       <div className="dashboard table-display row mx-1">
-        <div className="col">
+        <div className="col scroll-me">
           <ReservationList reservations={reservations} />
         </div>
         <div className="col">

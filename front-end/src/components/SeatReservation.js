@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { FaTimes, FaCheck } from "react-icons/fa";
 import { useParams, useHistory } from "react-router-dom";
 import Loading from "../layout/Loading";
 import { readReservation, listTables, seatReservation } from "../utils/api";
@@ -73,11 +74,12 @@ export default function SeatReservation() {
             {currentReservation.people}
           </h3>
         </div>
-        <div className="seat seat-form row ml-1 mb-3">
+        <div className="seat seat-form form-group row ml-1 mb-3">
           <label htmlFor="table_id">Seat at:</label>
           <select
             name="table_id"
             id="table_id"
+            className="form-control"
             onChange={handleSelectChange}
             value={tableId}
           >
@@ -92,12 +94,12 @@ export default function SeatReservation() {
               className="btn btn-secondary mr-2"
               onClick={handleCancel}
             >
-              Cancel
+              <FaTimes /> Cancel
             </button>
           </div>
           <div>
             <button type="submit" className="btn btn-primary" onClick={handleSubmit}>
-              Submit
+              <FaCheck /> Submit
             </button>
           </div>
         </div>

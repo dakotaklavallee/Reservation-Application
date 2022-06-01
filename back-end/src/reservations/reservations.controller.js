@@ -47,7 +47,7 @@ function validDate(req, res, next) {
   if (!data["reservation_date"].match(/\d{4}-\d{2}-\d{2}/)) {
     return next({
       status: 400,
-      message: `reservation_date stupid and wrong.`,
+      message: `reservation_date is invalid.`,
     });
   }
   next();
@@ -87,7 +87,7 @@ function validTime(req, res, next) {
   if (!data["reservation_time"].match(/[0-9]{2}:[0-9]{2}/)) {
     return next({
       status: 400,
-      message: `reservation_time wrong`,
+      message: `reservation_time is invalid.`,
     });
   }
   next();
@@ -98,7 +98,7 @@ function validPeople(req, res, next) {
   if (typeof data["people"] !== "number") {
     return next({
       status: 400,
-      message: `people wrong`,
+      message: `people is invalid.`,
     });
   }
   next();

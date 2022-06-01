@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { FaSearch } from "react-icons/fa";
 import ReservationList from "./ReservationList";
 import NothingToSeeHere from "./NothingToSeeHere";
 import { listReservations } from "../utils/api";
@@ -39,23 +40,23 @@ export default function SearchPage() {
       </div>
 
       <div className="search search-input input-group row mx-2">
-          <input
-            id="mobile_number"
-            className="form-control"
-            name="mobile_number"
-            placeholder="Mobile Number"
-            type="text"
-            required
-            onChange={handleChange}
-            value={mobileNumber}
-          />
+        <input
+          id="mobile_number"
+          className="form-control"
+          name="mobile_number"
+          placeholder="Mobile Number"
+          type="text"
+          required
+          onChange={handleChange}
+          value={mobileNumber}
+        />
         <div className="input-group-append">
           <button
             className="btn btn-primary"
             type="submit"
             onClick={handleFind}
           >
-            Find
+            <FaSearch /> Find
           </button>
         </div>
       </div>
