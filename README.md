@@ -45,8 +45,6 @@ You can aditionally run tests by running
 `npm run test:frontend`.
 These work for the corresponsing user story commands for these extensions as well.
 
-## Screenshots
-
 # Dashboard
 ![Dashboard](https://i.imgur.com/u9MRJXHm.png)
 # Table Creation
