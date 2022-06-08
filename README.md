@@ -11,7 +11,7 @@ Back-End: Express.js, Node.js, Knex, PostgreSQL
 Deployment & Version Control: Git, GitHub, Heroku
 
 A deployed, testable version can be viewed here:
-<a href="https://resv-client.herokuapp.com/dashboard">Try Me</a>
+<a href="https://order-up-client.vercel.app/dashboard">Try Me</a>
 
 Installation Instructions and Screenshots Included Below:
 ## Database setup
