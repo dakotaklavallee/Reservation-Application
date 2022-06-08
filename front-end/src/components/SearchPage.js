@@ -31,15 +31,15 @@ export default function SearchPage() {
   };
 
   return (
-    <>
+    <div className="container">
       <div className="search search-title row ml-2 mt-1">
-        <h1>Search Reservations</h1>
+        <h1 className="my-3">Search Reservations</h1>
       </div>
       <div className="search search-error">
         <ErrorAlert error={findError} />
       </div>
 
-      <div className="search search-input input-group row mx-2">
+      <div className="search search-input input-group row mx-2 mb-4">
         <input
           id="mobile_number"
           className="form-control"
@@ -53,6 +53,7 @@ export default function SearchPage() {
         <div className="input-group-append">
           <button
             className="btn btn-primary"
+            style={{backgroundColor: "#fff", color: "black", borderColor: "black"}}
             type="submit"
             onClick={handleFind}
           >
@@ -69,6 +70,6 @@ export default function SearchPage() {
           )}
         </div>
       ) : null}
-    </>
+    </div>
   );
 }

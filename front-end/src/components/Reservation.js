@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useHistory, Link } from "react-router-dom";
 import ErrorAlert from "../layout/ErrorAlert";
 import { cancelReservation } from "../utils/api";
-import './Reservation.css'
+import "./Reservation.css";
 
 export default function Reservation({ reservation }) {
   const [error, setError] = useState(null);
@@ -27,44 +27,55 @@ export default function Reservation({ reservation }) {
   return (
     <>
       <ErrorAlert error={error} />
-      <tr>
-        <th scope="row">{reservation.reservation_id}</th>
-        <td>
-          {reservation.first_name}, {reservation.last_name}
-        </td>
-        <td>{reservation.mobile_number}</td>
-        <td>{reservation.reservation_date}</td>
-        <td>{reservation.reservation_time}</td>
-        <td>{reservation.people}</td>
-        <td data-reservation-id-status={reservation.reservation_id}>
-          {reservation.status}
-        </td>
-        <td className="">
-          {reservation.status === "booked" ? (
-            <Link to={`/reservations/${reservation.reservation_id}/seat`}>
-              Seat
-            </Link>
-          ) : null}
-        </td>
-        <td>
-          {reservation.status === "booked" ? (
-            <Link to={`/reservations/${reservation.reservation_id}/edit`}>
-              Edit
-            </Link>
-          ) : null}
-        </td>
-        <td>
-          <button
-            className="btn btn-link"
-            type="button"
-            name="cancel"
-            data-reservation-id-cancel={reservation.reservation_id}
-            onClick={handleReservationCancel}
-          >
-            Cancel
-          </button>
-        </td>
-      </tr>
+      <div className="card border-secondary mb-3 text-center">
+        <div
+          data-reservation-id-status={reservation.reservation_id}
+          className="card-header"
+        >
+          Status: {reservation.status}
+        </div>
+        <div className="card-header">ID: {reservation.reservation_id}</div>
+        <div className="card-body text-secondary">
+          <p className="card-text">
+            Name: {reservation.first_name}, {reservation.last_name}
+          </p>
+          <p className="card-text">Mobile: {reservation.mobile_number}</p>
+          <p className="card-text">Party Size: {reservation.people}</p>
+          <p className="card-text">
+            Reservation Time: {reservation.reservation_time}
+          </p>
+          <div>
+            {reservation.status === "booked" ? (
+              <>
+                <Link
+                  style={{ backgroundColor: "#fff", color: "black" }}
+                  className="btn btn-secondary mr-3"
+                  to={`/reservations/${reservation.reservation_id}/seat`}
+                >
+                  Seat
+                </Link>
+                <Link
+                  style={{ backgroundColor: "#fff", color: "black" }}
+                  className="btn btn-primary mr-3"
+                  to={`/reservations/${reservation.reservation_id}/edit`}
+                >
+                  Edit
+                </Link>
+              </>
+            ) : null}
+            <button
+              className="btn btn-danger"
+              type="button"
+              name="cancel"
+              style={{ backgroundColor: "#fff", color: "black" }}
+              data-reservation-id-cancel={reservation.reservation_id}
+              onClick={handleReservationCancel}
+            >
+              Cancel
+            </button>
+          </div>
+        </div>
+      </div>
     </>
   );
 }

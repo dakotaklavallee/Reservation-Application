@@ -9,8 +9,8 @@ export default function ReservationForm({
   mode,
 }) {
   return (
-    <>
-      <h1 className="my-3">{mode} Reservation</h1>
+    <div className="container">
+      <h1 className="my-3 text-center">{mode} Reservation</h1>
       <form onSubmit={submitHandler}>
         <div className="form-group">
           <label htmlFor="first_name">Enter Your First Name:</label>
@@ -43,6 +43,7 @@ export default function ReservationForm({
             name="mobile_number"
             type="text"
             className="form-control"
+            pattern="^(\+\d{1,2}\s)?\(?\d{3}\)?[\s.-]?\d{3}[\s.-]?\d{4}$"
             required
             onChange={handleChange}
             value={formData.mobile_number}
@@ -89,15 +90,20 @@ export default function ReservationForm({
           <button
             className="btn btn-secondary mr-2"
             type="button"
+            style={{backgroundColor: "#fff", color: "black", borderColor: "black"}}
             onClick={handleCancel}
           >
             <FaTimes /> Cancel
           </button>
-          <button className="btn btn-primary" type="submit">
+          <button 
+          className="btn btn-primary" 
+          type="submit"
+          style={{backgroundColor: "#fff", color: "black", borderColor: "black"}}
+          >
             <FaCheck /> Submit
           </button>
         </div>
       </form>
-    </>
+    </div>
   );
 }

@@ -9,8 +9,8 @@ export default function TableForm({
   handleCancel,
 }) {
   return (
-    <div>
-      <h1>{title} Table</h1>
+    <div className="container">
+      <h1 className="my-3 text-center">{title} Table</h1>
       <form onSubmit={handleSubmit}>
         <div className="form-group">
           <label htmlFor="table_name">Table Name:</label>
@@ -40,12 +40,17 @@ export default function TableForm({
         <div className="form-group">
           <button
             className="btn btn-secondary mr-2"
+            style={{backgroundColor: "#fff", color: "black", borderColor: "black"}}
             type="button"
             onClick={handleCancel}
           >
             <FaTimes /> Cancel
           </button>
-          <button className="btn btn-primary" type="submit">
+          <button 
+          className="btn btn-primary" 
+          type="submit"
+          style={{backgroundColor: "#fff", color: "black", borderColor: "black"}}
+          >
             <FaCheck /> Submit
           </button>
         </div>

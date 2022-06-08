@@ -61,9 +61,9 @@ export default function SeatReservation() {
 
   if (Object.keys(currentReservation).length && availableTables.length) {
     return (
-      <div>
-        <div className="seat seat-title row ml-1 mt-1">
-          <h1>Seat Reservation</h1>
+      <div className="container">
+        <div className="seat seat-title row d-flex justify-content-center">
+          <h1 className="my-3 text-center">Seat Reservation</h1>
         </div>
         <div className="seat seat-information row ml-1 mb-3">
           <h3>
