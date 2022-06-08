@@ -1,6 +1,6 @@
 ![Logo](https://i.imgur.com/LZQk8KP.png)
 # OrderUp: A Full-Stack Restaurant Reservation Solution.
-OrderUP is a full-stack solution to a full-stack problem: managing table reservations at a restaurant!
+OrderUp is a full-stack solution to a full-stack problem: managing table reservations at a restaurant!
 Built to support CRUDL operations, this is a simple and effective application for corporate usage.
 A company can both create reservations for their customers, as well as service tables as need be.
 Status updates are provided throughout, and when a table is finished dining, it can be cleared.
