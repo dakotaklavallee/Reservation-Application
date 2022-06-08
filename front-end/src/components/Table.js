@@ -25,18 +25,26 @@ export default function Table({ table }) {
   return (
     <>
       <ErrorAlert error={error} />
-      <tr>
-        <th scope="row">{table.table_id}</th>
-        <td>{table.table_name}</td>
-        <td>{table.capacity}</td>
-        <td>{table.reservation_id}</td>
-        <td data-table-id-status={table.table_id}>{table.reservation_id ? "occupied" : "free"}</td>
-        <td>
+      <div className="card border-secondary mb-3 text-center">
+        <div
+          className="card-header"
+        >
+          Table: {table.table_name}
+        </div>
+        <div className="card-body text-secondary">
+          <p className="card-text">
+            Capacity: {table.capacity}
+          </p>
+          <p className="card-text" data-table-id-status={table.table_id}>
+            Status: {table.reservation_id ? "occupied" : "free"}
+          </p>
+          <>
           {table.reservation_id ? (
             <FinishButton table={table} handleFinish={handleFinish} />
           ) : null}
-        </td>
-      </tr>
+          </>
+        </div>
+      </div>
     </>
   );
 }

@@ -1,16 +1,23 @@
-@media only screen and (max-width: 730px) {
-  .scroll-me {
-    overflow-x: scroll;
-  }
-  th, td {
-    min-width: 100px;
-  }
+
+
+h1, h4 {
+  font-family: 'Quicksand', sans-serif;
 }
 
-@media only screen and (max-width: 991px) {
-    .dashboard{
-        display: flex;
-        align-items: center;
-        justify-content: center;
-    }
+
+.dashboard-nav button {
+  background-color: #fff;
+  color: black;
+  margin: 0px 5px;
+}
+
+.seat button{
+  background-color: #fff;
+  color: black;
+}
+
+.dashboard{
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }

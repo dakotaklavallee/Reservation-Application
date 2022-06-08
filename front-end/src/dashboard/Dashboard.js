@@ -1,13 +1,14 @@
 import React, { useEffect, useState } from "react";
-import { useHistory } from "react-router-dom";
+import { useHistory, Link } from "react-router-dom";
 import { listReservations, listTables } from "../utils/api";
 import { next, previous } from "../utils/date-time";
 import useQuery from "../utils/useQuery";
 import ErrorAlert from "../layout/ErrorAlert";
 import { FaAngleLeft, FaAngleRight } from "react-icons/fa";
+import { GrAdd } from "react-icons/gr";
 import ReservationList from "../components/ReservationList";
 import TableList from "../components/TableList";
-import './Dashboard.css';
+import "./Dashboard.css";
 
 /**
  * Defines the dashboard page.
@@ -57,8 +58,8 @@ function Dashboard({ date }) {
 
   return (
     <main>
-      <div className="dashboard dashboard-title row ml-1">
-        <h1>Dashboard</h1>
+      <div className="dashboard dashboard-title row ml-1 mt-3">
+        <h1>Your Dashboard</h1>
       </div>
       <div className=" dashboard dashboard-info d-md-flex mb-3 row ml-1">
         <h4 className="mb-0">Reservations for date {pageDate}</h4>
@@ -79,12 +80,26 @@ function Dashboard({ date }) {
       <div className="dashboard error-list row ml-1">
         <ErrorAlert error={reservationsError} />
       </div>
-      <div className="dashboard table-display row mx-1">
-        <div className="col scroll-me">
-          <ReservationList reservations={reservations} />
-        </div>
-        <div className="col">
-          <TableList tables={tables} />
+      <div className="container">
+        <div className="row mx-1">
+          <div className="col-md-6 col-sm-12">
+            <h4 className="text-center mb-3">
+              Reservations{" "}
+              <Link to="/reservations/new">
+                <GrAdd />
+              </Link>
+            </h4>
+            <ReservationList reservations={reservations} />
+          </div>
+          <div className="col-md-6 col-sm-12">
+            <h4 className="text-center mb-3">
+              Tables{" "}
+              <Link to="/tables/new">
+                <GrAdd />
+              </Link>
+            </h4>
+            <TableList tables={tables} />
+          </div>
         </div>
       </div>
     </main>
