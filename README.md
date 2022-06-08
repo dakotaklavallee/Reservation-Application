@@ -1,5 +1,5 @@
 ![Logo](https://i.imgur.com/LZQk8KP.png)
-# Periodic Tables: A Full-Stack Restaurant Reservation Solution.
+# OrderUp: A Full-Stack Restaurant Reservation Solution.
 This application serves as a full-stack solution to a full-stack problem: managing table reservations at a restaurant!
 Built to support CRUDL operations, this is a simple and effective application for corporate usage.
 A company can both create reservations for their customers, as well as service tables as need be.
