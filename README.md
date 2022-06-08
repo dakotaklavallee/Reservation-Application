@@ -1,6 +1,6 @@
 ![Logo](https://i.imgur.com/LZQk8KP.png)
 # OrderUp: A Full-Stack Restaurant Reservation Solution.
-This application serves as a full-stack solution to a full-stack problem: managing table reservations at a restaurant!
+OrderUP is a full-stack solution to a full-stack problem: managing table reservations at a restaurant!
 Built to support CRUDL operations, this is a simple and effective application for corporate usage.
 A company can both create reservations for their customers, as well as service tables as need be.
 Status updates are provided throughout, and when a table is finished dining, it can be cleared.
@@ -46,18 +46,22 @@ You can aditionally run tests by running
 These work for the corresponsing user story commands for these extensions as well.
 
 # Dashboard
-![Dashboard](https://i.imgur.com/u9MRJXHm.png)
+![Dashboard](https://i.imgur.com/kQL844Ym.png)
+
 # Table Creation
-![Table Creation](https://i.imgur.com/TpWTjD0m.png)
+![Table Creation](https://i.imgur.com/ElfAE4Hm.png)
 
 # Create Reservation
-![Create Reservation](https://i.imgur.com/bf0GBJXm.png)
+![Create Reservation](https://i.imgur.com/bK44YLfm.png)
 
 # Search
-![Search](https://i.imgur.com/C6pSN7Qm.png)
+![Search](https://i.imgur.com/BXJXQgRm.png)
 
 # Edit Reservation
-![Edit Reservation](https://i.imgur.com/i5rhdRZm.png)
+![Edit Reservation](https://i.imgur.com/5f8uezom.png)
 
 # Seat Table
-![Seating](https://i.imgur.com/29QXmsjm.png)
+![Seating](https://i.imgur.com/BXJXQgRm.png)
+
+# Mobile
+![Mobile](https://i.imgur.com/OAvOxoSm.jpg)
